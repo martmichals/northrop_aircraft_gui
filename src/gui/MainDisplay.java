@@ -45,8 +45,8 @@ public class MainDisplay{
             container.add(allPanels.get(i), c);
         }
         
-        CustomMenu mainFrameMenu = new CustomMenu("idCustomMenu");
-        mainFrame.setJMenuBar((JMenuBar)mainFrameMenu);
+        //CustomMenu mainFrameMenu = new CustomMenu("idCustomMenu");
+        //mainFrame.setJMenuBar((JMenuBar)mainFrameMenu);
         
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(systemConstants.SCREEN_DIMENSIONS);
