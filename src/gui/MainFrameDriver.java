@@ -8,14 +8,14 @@ import java.util.logging.Logger;
 
 /**
  * @title REconnaissance GUI to display aircraft telemetry
- * @description This program will display live telemetry from the aircraft
- *              fields shown will include: user inputs for throttle, rudder,
+ * @description This program will display live telemetry from the aircraft.
+ *              Fields shown will include: user inputs for throttle, rudder,
  *              elevator, rudder, aircraft pitch + roll, groundspeed, heading, as 
  *              well as the most recent image from the aircraft
- * @author MARTIN
+ * @author Martin Michalski
  */
 
-/**Main Goals:
+/**Current Goals:
  * Further reduce latency in the project
  * Menus in GUI to hide and add elements
  * Pause/Play Button
