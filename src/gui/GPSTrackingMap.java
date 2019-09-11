@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
 
 //Class to draw out the map and elements inside the map
 public class GPSTrackingMap extends Panel{
-    private static final String MAPS_API_KEY = "AIzaSyDgHviaoBCHBeZQIeQodI8QT6RCbQ9xQX4";
+    private static final String MAPS_API_KEY = "google_static_maps_api_key";
     private static final String URL_START = "https://maps.googleapis.com/maps/api/staticmap?";
     public static final String DEFAULT_ZOOM = "17";
     public static final double[] SCOPE_ZOOM_DEFAULT = {0.0036, 0.0064};
