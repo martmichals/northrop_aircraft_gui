@@ -1,0 +1,56 @@
+Line 1:		isSystemStarted
+Line 2:		isNewDataPacket
+Line 3:		systemStartTime (GPS - - RAW Time HHMMSSCC)		
+Line 4:		CurrentSystemTime (GPS - RAW Time HHMMSSCC)
+Line 5:		SystemRollAngle (Right wing angle to x-axis in xz plane) (DOUBLE_RADIANS)
+Line 6:		SystemPitchAngle (Flat of wing angle to the x-axis of the xy plane) (DOUBLE__RADIANS)
+Line 7:		SystemYawAngle (Wing seam line angle to the zy plane) (DOUBLE_RADIANS)
+Line 8:		GPS Data (Longitude - Double)
+Line 9:		GPS Data (Latitude - Double)
+Line 10:	GPS Data (Heading/Course - Raw course in 100ths of degree)
+Line 11:	GPS Data (Groundspeed - Raw speed in 100ths of a knot)
+Line 12:	GPS Data (Satellites Connected - Integer)
+Line 13:	User Input (THR) (Find the range and then use JAVA mapping function)
+Line 14:	User Input (RUD)
+Line 15:	User Input (ELE)
+Line 16:	User Input (AIL)
+
+15 degrees: 0.261799
+30 degrees: 0.523599
+45 degrees: 0.785398
+60 degrees: 1.0472
+
+Samples:
+true
+true
+1543035410769
+1543036000000
+-0.523599
+0.523599
+0
+0
+0
+0
+0
+0
+100
+0
+0
+0
+
+true
+true
+1543035410769
+1543036000000
+0
+0
+0
+0
+0
+0
+0
+0
+100
+0
+0
+0

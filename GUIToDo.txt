@@ -1,0 +1,10 @@
+Things to implement in the project:
+
+Different packet types ('|S|', '|I|', '|G|')
+Packets sent out on different intervals based on the frequency of display
+Static google maps, implement graphing 
+	Find frequency for optimal sendoff of data
+Arduino code rewrite
+
+Reformat the Java GUI for two flow panels
+Static Maps

@@ -1,0 +1,15 @@
+SystemConstants.txt Template
+
+Line 1: Main Frame Name
+Line 2: Image Panel Height
+Line 3: Image Panel Width
+Line 4: Attitude Indicator Panel Width
+Line 5: Attitude Indicator Panel Height
+Line 6: Ground Speed Indicator Panel Width
+Line 7: Ground Speed Indicator Panel Height
+Line 8: Heading Indicator Panel Width
+Line 9: Heading Indicator Panel Height
+Line 10: Data Packet Text File Title
+Line 11: GUI Background ColorR
+Line 12: GUI Background ColorG
+Line 12: GUI Background ColorB
