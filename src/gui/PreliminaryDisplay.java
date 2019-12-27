@@ -7,13 +7,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,7 +24,7 @@ public class PreliminaryDisplay implements ActionListener{
     public static final String FRAME_TITLE = "REconnaissance GUI - Startup Options";
     public static final String BUTTON_TITLE = "Start Program";
     public static final String FILE_ICON_IMAGE_PATH = "FileIcon.png";
-    public static final String[] STARTUP_OPTIONS = {"From local records", "From live data"};
+    public static final String[] STARTUP_OPTIONS = {"From local records"};
     public static final String DEFAULT_HISTORY_FILE_PATH = "C:\\Users\\martm\\Desktop\\NetBeans Projects\\REconnaissanceGUI\\FlightPacketHistory.txt";
     public static final String LIVE_READ_BEGIN_CMD = "C:\\Users\\martm\\PycharmProjects\\liveSerialReader\\venv\\Scripts\\python.exe C:\\Users\\martm\\PycharmProjects\\liveSerialReader\\liveSerialReader.py";
     public static final int[] ICON_DIMENSIONS = {1024/45, 1024/45};
@@ -191,11 +185,13 @@ public class PreliminaryDisplay implements ActionListener{
                 System.out.println("Drawing in frame with hideables visible");
                 drawAllComponents(true);
                 lastOptionDropdownIndex = 0;
-            }else if(option.equals(STARTUP_OPTIONS[1]) && lastOptionDropdownIndex != 1){
+            }
+            // This code segment to be used if program is extended to support live data reading
+            /*else if(option.equals(STARTUP_OPTIONS[1]) && lastOptionDropdownIndex != 1){
                 System.out.println("Drawing in frame with hideables invisible");
                 drawAllComponents(false);
                 lastOptionDropdownIndex = 1;
-            }else{
+            }*/else{
                 System.out.println("Not redrawing, repeat option");
             }
             return;
