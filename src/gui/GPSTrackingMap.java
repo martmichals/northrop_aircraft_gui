@@ -11,13 +11,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 
-//Class to draw out the map and elements inside the map
+/** Custom panel used in order to generate a map and trace the path of the aircraft 
+ *  during its flight
+ */
 public class GPSTrackingMap extends Panel{
-    private static final String MAPS_API_KEY = "google_static_maps_api_key";
+    private static final String MAPS_API_KEY = "YOUR_STATIC_MAPS_KEY";
     private static final String URL_START = "https://maps.googleapis.com/maps/api/staticmap?";
     public static final String DEFAULT_ZOOM = "17";
     public static final double[] SCOPE_ZOOM_DEFAULT = {0.0036, 0.0064};
@@ -35,17 +36,12 @@ public class GPSTrackingMap extends Panel{
     
     private GPSHistory pathAssist;
     
-    public GPSTrackingMap(){
-        super();
-        urlRequest = "";
-        mapImage = null;
-        gpsFrameImage = null;
-        gpsMapCenter = null;
-        GPSScope = null;
-        currentGPSPoint = null;
-        pathAssist = null;
-    }
-    
+    /**
+     * Constructor for this custom class
+     * @param id : required for parent class
+     * @param dimensions : required for parent class
+     * @param gpsFrameImageName : relative path for image used as the frame for the map
+     */
     public GPSTrackingMap(String id, int[] dimensions, String gpsFrameImageName){
         super(id, dimensions);
         urlRequest = "";
@@ -63,6 +59,11 @@ public class GPSTrackingMap extends Panel{
         pathAssist = new GPSHistory();
     }
     
+    /**
+     * Method to initialize the display based on datascraper's attributes
+     * Fetches required image from Google's Static Maps API
+     * @param dataScraper : DataScraper object with current data
+     */
     public void initializeWithValidGPS(DataScraper dataScraper) throws IOException{
         while(!dataScraper.checkGPSReadiness()){
             dataScraper.scrapeForData();
@@ -76,7 +77,6 @@ public class GPSTrackingMap extends Panel{
                             + gpsMapCenter[1]);
         currentGPSPoint = gpsMapCenter;
         
-        
         this.packURL();
         URL url = new URL(urlRequest);
         mapImage = ImageIO.read(url);
@@ -84,6 +84,7 @@ public class GPSTrackingMap extends Panel{
         this.fillGPSScope();
     }
     
+    // Method that fills the attribute "GPSScope"
     private void fillGPSScope(){
         int zoomDifference = Integer.parseInt(DEFAULT_ZOOM) - Integer.parseInt(ZOOM);
         double scaleFactor = Math.pow(2.0, zoomDifference);
@@ -93,6 +94,7 @@ public class GPSTrackingMap extends Panel{
         GPSScope[1] = scaleFactor * SCOPE_ZOOM_DEFAULT[1];
     }
     
+    // Packs urlRequest with the proper url needed to fetch the map required to run the program
     private void packURL(){
         urlRequest = "";
         
@@ -119,6 +121,7 @@ public class GPSTrackingMap extends Panel{
         System.out.println("Sending image request to Google API");
     }
     
+    // Converts GPS coordinates of the plane to plottable XY coordinates on the map
     private double[] convertGPSToPlottable(){
         //Initial point, current point
         double latNot, longNot;
@@ -159,6 +162,7 @@ public class GPSTrackingMap extends Panel{
         return pointOnImage;
     }
     
+    // Method to properly paint all components onto the panel
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -173,7 +177,7 @@ public class GPSTrackingMap extends Panel{
         g2d.drawImage(mapImage, at, null);
         
         
-        //Work here to paint the path of the aircraft
+        // Code that plots the path of the aircraft
         double[] point = convertGPSToPlottable();
         Line2D.Double[] path = pathAssist.getPath();
         
@@ -190,11 +194,13 @@ public class GPSTrackingMap extends Panel{
         g2d.drawImage(gpsFrameImage, at2, null);
     }
     
+    // Initializes the panel
     @Override
     public void initialize(){
         this.setPreferredSize(new Dimension(super.getDimensions()[0], super.getDimensions()[1]));
     }
     
+    // Updates the panel with new data inside dataScraper
     @Override
     public void updatePanel(DataScraper dataScraper){
         currentGPSPoint = new double[2];
@@ -204,11 +210,3 @@ public class GPSTrackingMap extends Panel{
         this.repaint();  
     } 
 }
-
-    //Sample image gather
-    //https://maps.googleapis.com/maps/api/staticmap?center=42.144154,%20-88.041871&zoom=17&size=600x450&maptype=hybrid&key=AIzaSyDgHviaoBCHBeZQIeQodI8QT6RCbQ9xQX4
-    
-    //Zoom  = 17
-    //Center      42.060553, -88.161007   ||   42.144154, -88.041871
-    //Right Top   42.062353, -88.157807   ||   42.145954, -88.038671
-    //Half-Scope +00.001800, +00.003200   ||

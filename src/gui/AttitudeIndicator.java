@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**  Custom panel used in order to generate the attitude indicator
+ *   Changes display based on the orientation data from the aircraft
+ **/
 public class AttitudeIndicator extends Panel{
     private BufferedImage attitudeIndicatorOverlay;
     private BufferedImage attitudeIndicatorArtificialHorizon;
@@ -17,15 +20,13 @@ public class AttitudeIndicator extends Panel{
     
     private AttitudeIndicatorStabilization stabilizer;
     
-    public AttitudeIndicator(){
-        super();
-        attitudeIndicatorOverlay = null;
-        attitudeIndicatorArtificialHorizon = null;
-        pitchRadians = 0;
-        rollRadians = 0;
-        stabilizer = new AttitudeIndicatorStabilization();
-    }
-    
+    /**
+     * Constructor for the class
+     * @param id : string id, attribute of parent class
+     * @param dimensions: pixel dimensions, attribute of parent class
+     * @param overlayFileName: filename for image put on top of the artificial horizon
+     * @param artificialHorizonFileName : filename for artificial horizon
+     */
     public AttitudeIndicator(String id, int[] dimensions, String overlayFileName, String artificialHorizonFileName){
         super(id, dimensions);
         
@@ -41,11 +42,12 @@ public class AttitudeIndicator extends Panel{
         stabilizer = new AttitudeIndicatorStabilization();
     }
     
+    // Function that returns how much the artificial horizon is to be shifted for a given pitch
     private double getPitchTranslation(){
         return 13 * (pitchRadians / 0.0872665);
     }
     
-    //Repaint this in order to update the indication display in the JPanel
+    // Function that paints the panel, creating the attitude indicator based on object attributes
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -68,7 +70,7 @@ public class AttitudeIndicator extends Panel{
        g2d.drawImage(attitudeIndicatorOverlay, at2, null);
     }
     
-    //Method to update the JPanel based on the instance variable values
+    // Method to update the panel display based on the datascraper's attributes
     @Override
     public void updatePanel(DataScraper dataScraper){
         
@@ -87,37 +89,5 @@ public class AttitudeIndicator extends Panel{
     @Override
     public void initialize(){
         this.setPreferredSize(new Dimension(super.getDimensions()[0], super.getDimensions()[1]));
-    }
-    
-    public BufferedImage getAttitudeIndicatorArtificialHorizon(){
-        return attitudeIndicatorArtificialHorizon;
-    }
-    
-    public BufferedImage getAttitudeIndicatorOverlay(){
-        return attitudeIndicatorOverlay;
-    }
-    
-    public double getPitchRadians(){
-        return pitchRadians;
-    }
-    
-    public double getRollRadians(){
-        return rollRadians;
-    }
-    
-    public void setAttitudeIndicatorArtificialHorizon(BufferedImage attitudeIndicatorArtificialHorizon){
-        this.attitudeIndicatorArtificialHorizon = attitudeIndicatorArtificialHorizon;
-    }
-    
-    public void setAttitudeIndicatorOverlay(BufferedImage attitudeIndicatorOverlay){
-        this.attitudeIndicatorOverlay = attitudeIndicatorOverlay;
-    }
-    
-    public void setPitchRadians(double pitchRadians){
-        this.pitchRadians = pitchRadians;
-    }
-    
-    public void setRollRadians(double rollRadians){
-        this.rollRadians = rollRadians;
     }
 }
