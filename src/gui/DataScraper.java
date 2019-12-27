@@ -10,6 +10,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * This class gathers data from a "data packet" text file. This class holds all
+ * the data gathered from each data packet, and is used by all the Panels in the
+ * GUI in order to generate proper displays
+ */
 public class DataScraper {
     //All angles are in radians
     private String txtFile;
@@ -27,21 +32,11 @@ public class DataScraper {
     private int satellitesConnected;
     private int[] userInputs; //{throttle, rudder, elevator, aileron} STD notation
     
-    public DataScraper(){
-        txtFile = "";
-        
-        systemStartTime = 0;
-        currentPacketTime = 0;
-        systemSpeed = 0;
-        systemHeading = 0;
-        systemYawValue = 0;
-        systemLongitude = 0;
-        systemLatitude = 0;
-        satellitesConnected = 0;
-        
-        userInputs = new int[4];
-    }
-    
+    /**
+     * Constructor for the data scraper
+     * @param txtFile : the data packet text file path
+     *                  a template for this file is in the project files
+     */
     public DataScraper(String txtFile)throws IOException{
         this.txtFile = txtFile;
         
@@ -59,6 +54,8 @@ public class DataScraper {
         scrapeForData();
     }
     
+    /** Method that pulls new data from the data packet text file
+     */
     public void scrapeForData() throws IOException, FileNotFoundException {
         File dataFile = new File(txtFile);
         BufferedReader dataReader = new BufferedReader(new FileReader(dataFile));
@@ -107,6 +104,7 @@ public class DataScraper {
         dataReader.close();
     }
     
+    // Method to overwrite the text file with the proper parameters
     private void overWriteFile(String txtFile){
         try{
             PrintWriter dataWriter = new PrintWriter(txtFile, "UTF-8");
@@ -119,7 +117,8 @@ public class DataScraper {
             Logger.getLogger(DataScraper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
+    
+    // Method to return an array of strings, with each being a line read through the object dataReader
     private String[] processLines(int numLines, BufferedReader dataReader) throws IOException{
         String[] stringArray = new String[numLines];
         for(int i = 0; i < numLines; i++)
@@ -130,6 +129,7 @@ public class DataScraper {
             return stringArray;
     }
     
+    // Checks if any array values are null
     private boolean checkNull(String[] stringArray){
         for(int i = 0; i < stringArray.length; i++)
             if(stringArray[i] == null)
@@ -157,6 +157,9 @@ public class DataScraper {
         return str;
     }
     
+    /** Getter methods for all the data values gathered from the data packets, 
+     *  used by each panel to get relevant data to display
+     */
     public boolean checkGPSReadiness(){
         if(systemLatitude + systemLongitude == 0)
             return false;
@@ -217,61 +220,5 @@ public class DataScraper {
     
     public int getSatellitesConneceted(){
         return satellitesConnected;
-    }
-    
-    public void setTxtFile(String txtFile){
-        this.txtFile = txtFile;
-    }
-    
-    public void setIsSystemStarted(boolean isSystemStarted){
-        this.isSystemStarted = isSystemStarted;
-    }
-    
-    public void setIsNewDataPacket(boolean isNewDataPacket){
-        this.isNewDataPacket = isNewDataPacket;
-    }
-    
-    public void setSystemStartTime(Long systemStartTime){
-        this.systemStartTime = systemStartTime;
-    }
-    
-    public void setCurrentPacketTime(Long currentPacketTime){
-        this.currentPacketTime = currentPacketTime;
-    }
-    
-    public void setSystemRollAngle(double systemRollAngle){
-        this.systemRollAngle = systemRollAngle;
-    }
-    
-    public void setSystemPitchAngle(double systemPitchAngle){
-        this.systemPitchAngle = systemPitchAngle;
-    }
-    
-    public void setSystemSpeed(double systemSpeed){
-        this.systemSpeed = systemSpeed;
-    }
-    
-    public void setSystemHeading(double systemHeading){
-        this.systemHeading = systemHeading;
-    }
-    
-    public void setSystemYawValue(double systemYawValue){
-        this.systemYawValue = systemYawValue;
-    }
-    
-    public void setSystemLongitude(double systemLongitude){
-        this.systemLongitude = systemLongitude;
-    }
-    
-    public void setSystemLatitude(double systemLatitude){
-        this.systemLatitude = systemLatitude;
-    }
-    
-    public void setUserInputs(int[] userInputs){
-        this.userInputs = userInputs;
-    }
-    
-    public void setSatellitesConneceted(int satellitesConnected){
-        this.satellitesConnected = satellitesConnected;
     }
 }

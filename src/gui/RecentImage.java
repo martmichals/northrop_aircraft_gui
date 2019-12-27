@@ -6,6 +6,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.swing.BorderFactory;
 
+/** 
+ * Unused class. Was meant to display the most recent image from the onboard camera
+*/
 public class RecentImage extends Panel{
     private BufferedImage recentImage;
     

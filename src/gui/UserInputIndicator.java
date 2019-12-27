@@ -11,6 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ * Not in use. Class to represent user input, i.g. throttle, aileron, rudder, etc.
+ */
 public class UserInputIndicator extends Panel{
     private String inputName;
     private BufferedImage gauge;

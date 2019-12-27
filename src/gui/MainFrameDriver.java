@@ -1,33 +1,24 @@
 package gui;
 
-import java.awt.MenuBar;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @title REconnaissance GUI to display aircraft telemetry
- * @description This program will display live telemetry from the aircraft.
- *              Fields shown will include: user inputs for throttle, rudder,
- *              elevator, rudder, aircraft pitch + roll, groundspeed, heading, as 
- *              well as the most recent image from the aircraft
- * @author Martin Michalski
+ * @title       REconnaissance GUI to display aircraft telemetry
+ * @description This program displays telemetry from the aircraft. Displays indicators
+ *              which show the aircraft position, orientation, speed, and heading.
+ *              Currently runs only from history files stored locally on the machine
+ * @author      Martin Michalski
  */
 
-/**Current Goals:
- * Further reduce latency in the project
- * Menus in GUI to hide and add elements
- * Pause/Play Button
- * Path-drawing on map
- * Framing of the map, nice frame w/screws
- */
 public class MainFrameDriver {
     private static SystemConstants systemConstants;
     private static DataScraper dataScraper;
     private static ArrayList<Panel> allPanels;
     private static MainDisplay mainDisplay;
-    private static TestDisplay testDisplay;
+    // private static TestDisplay testDisplay;
     
     public static void main(String[] args) throws IOException{
         PreliminaryDisplay preliminaryDisplay = new PreliminaryDisplay();
@@ -96,6 +87,7 @@ public class MainFrameDriver {
         String[] temp = {""};
         new Thread(() -> {
             try {
+                System.out.println("Launching the PlaybackRunner on a new thread");
                 PlaybackRunner.text_to_scrape = display.getFilePath();
                 PlaybackRunner.main(temp);
             } catch (IOException ex) {

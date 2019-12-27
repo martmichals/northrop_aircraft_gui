@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 
+/**
+ * Not in use. Class for a new display used to debug panels in development.
+ */
 public class TestDisplay{
     private Container container;
     private JFrame mainFrame;

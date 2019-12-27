@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
  *  during its flight
  */
 public class GPSTrackingMap extends Panel{
-    private static final String MAPS_API_KEY = "YOUR_STATIC_MAPS_KEY";
+    private static final String MAPS_API_KEY = "AIzaSyDKwdI9CfTKUwSm9lVGKIise_Htv0qWBpQ";
     private static final String URL_START = "https://maps.googleapis.com/maps/api/staticmap?";
     public static final String DEFAULT_ZOOM = "17";
     public static final double[] SCOPE_ZOOM_DEFAULT = {0.0036, 0.0064};
@@ -67,7 +67,7 @@ public class GPSTrackingMap extends Panel{
     public void initializeWithValidGPS(DataScraper dataScraper) throws IOException{
         while(!dataScraper.checkGPSReadiness()){
             dataScraper.scrapeForData();
-            System.out.println("Initial GPS Point is {0, 0}, rechecking...");
+            System.out.println("Initializing. Please wait.");
         }
         
         gpsMapCenter = new double[2];

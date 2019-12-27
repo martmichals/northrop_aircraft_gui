@@ -3,7 +3,9 @@ package gui;
 import java.io.IOException;
 import java.util.Date;
 
-/**Project in order to read in from a Flight Log, and then write current data to the GUI txt file
+/** 
+ * Program that reads from a flight history file, timing updates to a data packet file
+ * such that the GUI displays the flight history at the correct pace 
  */
 public class PlaybackRunner {
     public static final String ABS_DESTINATION = "C:\\Users\\martm\\Desktop\\NetBeans Projects\\REconnaissanceGUI_FINAL\\DataPacket.txt";   //Absolute file path for the destination file, GUI file

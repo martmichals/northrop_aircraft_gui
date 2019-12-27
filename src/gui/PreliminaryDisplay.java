@@ -25,7 +25,7 @@ public class PreliminaryDisplay implements ActionListener{
     public static final String BUTTON_TITLE = "Start Program";
     public static final String FILE_ICON_IMAGE_PATH = "FileIcon.png";
     public static final String[] STARTUP_OPTIONS = {"From local records"};
-    public static final String DEFAULT_HISTORY_FILE_PATH = "C:\\Users\\martm\\Desktop\\NetBeans Projects\\REconnaissanceGUI\\FlightPacketHistory.txt";
+    public static final String DEFAULT_HISTORY_FILE_PATH = "C:\\Users\\martm\\Desktop\\NetBeans Projects\\REconnaissanceGUI_FINAL\\SAMPLE-HISTORY.txt";
     public static final String LIVE_READ_BEGIN_CMD = "C:\\Users\\martm\\PycharmProjects\\liveSerialReader\\venv\\Scripts\\python.exe C:\\Users\\martm\\PycharmProjects\\liveSerialReader\\liveSerialReader.py";
     public static final int[] ICON_DIMENSIONS = {1024/45, 1024/45};
     
@@ -38,7 +38,6 @@ public class PreliminaryDisplay implements ActionListener{
     private JCheckBox useDefaultsCheckbox;
     private JTextField userSelectedPathField;
     private JLabel userPathFieldLabel;
-    private JFileChooser fileChooser;
     private JLabel runnerLabel;
     private JPanel hideableElements;
     
@@ -47,6 +46,9 @@ public class PreliminaryDisplay implements ActionListener{
     private boolean isRunningLive;
     private boolean isReadyToSend;
     
+    /** 
+     * Class to handle events in the initial display
+     */
     public PreliminaryDisplay(){
         lastOptionDropdownIndex = 0;
         filePath = "";
@@ -243,6 +245,7 @@ public class PreliminaryDisplay implements ActionListener{
         return false;
     }
     
+    // Was in development at project end - code to launch live reading from a Xbee
     private void beginLiveRead(){
 //        try {
 //            Process process = Runtime.getRuntime().exec(this.LIVE_READ_BEGIN_CMD);
@@ -251,7 +254,7 @@ public class PreliminaryDisplay implements ActionListener{
 //            Logger.getLogger(PreliminaryDisplay.class.getName()).log(Level.SEVERE, null, ex);
 //            System.out.println("Error caught");
 //        }
-    // Ask mentors, this simply does not allow for the full run cycle of the program 
+//        Ask mentors, this simply does not allow for the full run cycle of the program 
     }
     
     public String getFilePath(){

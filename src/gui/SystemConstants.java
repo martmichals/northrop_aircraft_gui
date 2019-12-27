@@ -4,6 +4,10 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.*;
 
+/**
+ * Class that furnishes general constant values for the rest of the project
+ * Gathers data from a constants text file
+ */
 public class SystemConstants {
     //Title of the the overall JFrame
     public final String MAIN_FRAME_TITLE;

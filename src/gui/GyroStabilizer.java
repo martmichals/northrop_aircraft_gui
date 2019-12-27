@@ -3,9 +3,10 @@ package gui;
 import java.util.ArrayList;
 
 
-/**Class to smooth over the values from the gyroscope when in playback mode
+/**
+ * Class to smooth over the values from the gyroscope when in playback mode
  * Stabilization is simple average of last packet values
- * Length of arrays and size of average scope can be changed with the MAX_SIZE constant
+ * Length of arrays and size of average scope can be changed with the MAX_SIZE constant 
  */
 public class GyroStabilizer {
     public static final int MAX_SIZE = 15;

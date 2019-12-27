@@ -8,6 +8,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+/** Class used to create a menu at the top of the GUI
+ *  Not in use currently. Can be used in order to add "pause" functionality
+ */
 public class CustomMenu extends JMenuBar implements ActionListener{
     private String id;
     private JMenu fileMenu;

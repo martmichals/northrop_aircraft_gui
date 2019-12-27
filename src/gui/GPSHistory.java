@@ -3,7 +3,9 @@ package gui;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
-/**Class in order to track the history of the GPS Coordinates
+/**
+ * Class in order to track the history of the GPS Coordinates
+ * Used to draw out the path of the aircraft as it is flying over the map
  */
 public class GPSHistory {
     private ArrayList<GPSCoordinate> coordinateHistory;
@@ -13,11 +15,13 @@ public class GPSHistory {
     public final boolean DEBUG_PRINT = false; 
     private double headingRadians;
     
+    // Default Constructor
     public GPSHistory(){
         coordinateHistory = new ArrayList();
         pathPointHistory = new ArrayList();
     }
     
+    // Method to add a coordinate to history, left shift if max size is exceeded
     public void addGPSCoordinateToHistory(GPSCoordinate coordinate){
         if(coordinateHistory.size() == MAX_SIZE){
             ArrayList<GPSCoordinate> temp = new ArrayList();
@@ -38,6 +42,8 @@ public class GPSHistory {
         }
     }
     
+    // Method to add a coordinate to history, left shift if max size is exceeded
+    // This adds to path history, which is the array to draw out the path of the aircraft
     public void addPathPointToHistory(double[] pathPoint){
         //Check for null condition
         if(pathPoint == null)

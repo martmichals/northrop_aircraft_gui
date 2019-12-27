@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ * Panel to show the ground speed of the aircraft
+ */
 public class GroundSpeedIndicator extends Panel{
     private BufferedImage groundSpeedSpinner;
     private BufferedImage groundSpeedGauge;

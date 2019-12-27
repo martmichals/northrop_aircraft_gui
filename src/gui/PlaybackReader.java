@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Class to read data from the flight history files
+ */
 public class PlaybackReader {
     public final String DATA_START = "|S|";
     public final String DATA_SEPARATOR = "|";

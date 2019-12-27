@@ -5,6 +5,12 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
+/**
+ * Panel class in order to house multiple panels, in this program houses:
+ *      - Attitude Indicator
+ *      - Groundspeed Indicator
+ *      - Heading Indicator
+ */
 public class FlowPanel extends Panel{
     ArrayList<Panel> allPanels;
     //Make sure to initialize the panels once they are loaded in 

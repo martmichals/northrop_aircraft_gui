@@ -9,19 +9,14 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ * A panel to display the heading of the aircraft, from data in GPS History
+ */
 public class HeadingIndicator extends Panel{
     private BufferedImage headingBackdrop;
     private BufferedImage headingSpinner;
     private double heading;                   //value ranging from 0-360, heading 
     private GPSHistory historyAssist;
-    
-    public HeadingIndicator(){
-        super();
-        headingBackdrop = null;
-        headingSpinner = null; 
-        historyAssist = null;
-        heading = 0;
-    }
     
     public HeadingIndicator(String id, int[] dimensions, String headingBackdropFileName, String headingSpinnerFileName){
         super(id, dimensions);
