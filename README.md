@@ -8,6 +8,6 @@ the reading of live flight data. To see a video of a drone flight side-by-side w
 [here](https://www.youtube.com/watch?v=ujrxqKpUfvo&t=128s).
 
 <br/><br/><h2>To Run:</h2>
-1. Download all files in repository <br/>
+1. Download all files in repository into a Java Project <br/>
 2. Replace "MAPS_API_KEY" in GPSTrackingMap.java with your Google Static Maps API key <br/>
 3. Run
